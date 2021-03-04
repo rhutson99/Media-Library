@@ -13,8 +13,14 @@ namespace Media_Library
         {
             string movieFilePath = "movies.scrubbed.csv";
             logger.Info("Program started");
-            string scrubbedFile = FileScrubber.ScrubMovies("movies.csv");
-            logger.Info(scrubbedFile);
+
+            //check if scrubbed file exists, if not create it
+
+            if(!File.Exists(movieFilePath))
+            {
+                string scrubbedFile = FileScrubber.ScrubMovies("movies.csv");
+                logger.Info(scrubbedFile);
+            }
 
             MovieFile movieFile = new MovieFile(movieFilePath);
 

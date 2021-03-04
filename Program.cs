@@ -59,6 +59,26 @@ namespace Media_Library
                         {
                             movie.genres.Add("(no genres listed)");
                         }
+
+
+                        Console.WriteLine("Enter a Director, press enter if none given");
+                        string resp = Console.ReadLine();
+
+                        if(resp == "")
+                        {
+                            resp = "unassigned";
+                            movie.director = resp;
+                        }
+
+                        else
+                        {
+                            movie.director = resp;
+                        }
+
+
+                        Console.WriteLine("Enter the running time in HH:MM:SS format");
+
+                        movie.runningTime = TimeSpan.Parse(Console.ReadLine());
                         // add movie
                         movieFile.AddMovie(movie);
                     }

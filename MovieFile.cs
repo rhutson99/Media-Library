@@ -42,6 +42,8 @@ namespace Media_Library
                         movie.mediaId = UInt64.Parse(movieDetails[0]);
                         movie.title = movieDetails[1];
                         movie.genres = movieDetails[2].Split('|').ToList();
+                        movie.director = movieDetails[3];
+                        movie.runningTime = movieDetails[4];
                     }
                     else
                     {
@@ -89,7 +91,7 @@ namespace Media_Library
                 // first generate movie id
                 movie.mediaId = Movies.Max(m => m.mediaId) + 1;
                 StreamWriter sw = new StreamWriter(filePath, true);
-                sw.WriteLine($"{movie.mediaId},{movie.title},{string.Join("|", movie.genres)}");
+                sw.WriteLine($"{movie.mediaId},{movie.title},{string.Join("|", movie.genres)},{movie.director},{movie.runningTime}");
                 sw.Close();
                 // add movie details to Lists
                 Movies.Add(movie);
